@@ -12,7 +12,7 @@
 var elevators = [
 	{
 		requested:false,
-		currentfloor:null,
+		currentfloor:0,
 		doors:closed,
 		occupied:false,
 		trips:0,
@@ -25,17 +25,54 @@ var floors = [
 		elevatorpresent:false,
 		request:requestElevator
 
+	},
+	{
+		requested:false,
+		elevatorpresent:false,
+		request:requestElevator
+
+	},
+	{
+		requested:false,
+		elevatorpresent:false,
+		request:requestElevator
+
+	},
+	{
+		requested:false,
+		elevatorpresent:false,
+		request:requestElevator
+
+	},
+	{
+		requested:false,
+		elevatorpresent:false,
+		request:requestElevator
+
 	}
+
 ]
 
 function requestElevator(floor){
-	closestElevator = 0;
+	var closestElevator = 0;
 
-	elevators.map(function(elevator){
-		if( elevators.indexOf(elevator) - floor < closestElevator - floor ){
-			closestElevator =  elevators.indexOf(elevator);
+	for(i = 0; i < elevators.length; i++){
+		if( i - floor < closestElevator - floor ){
+			closestElevator =  i;
 		}
-	});
+	};
+
+	var requestedElevator = elevators[closestElevator];
+	requestElevator.requestElevator = true;
+
+	if(requestedElevator.currentfloor > floor){
+		for(i = requestedElevator.currentfloor; i < floor; i++){
+
+		}
+	}
+	else{
+
+	}
 }
 
 </script>
