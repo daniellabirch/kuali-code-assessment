@@ -9,27 +9,34 @@
 <script>
 
 //elevator script will go here, I might add a simple UI to the html code if I have time
-var elevator = [
+var elevators = [
 	{
-		requested:no,
+		requested:false,
 		currentfloor:null,
 		doors:closed,
-		occupied:no,
+		occupied:false,
 		trips:0,
 	}
 ]
 
-var building = [
+var floors = [
 	{
-		requested:no,
-		elevatorpresent:no,
-		request:function(){
-
-		}
+		requested:false,
+		elevatorpresent:false,
+		request:requestElevator
 
 	}
 ]
 
+function requestElevator(floor){
+	closestElevator = 0;
+
+	elevators.map(function(elevator){
+		if( elevators.indexOf(elevator) - floor < closestElevator - floor ){
+			closestElevator =  elevators.indexOf(elevator);
+		}
+	});
+}
 
 </script>
 </body>
