@@ -13,7 +13,7 @@ var elevators = [
 	{
 		requested:false,
 		currentfloor:0,
-		doors:closed,
+		doorsopen:false,
 		occupied:false,
 		trips:0,
 	}
@@ -67,12 +67,19 @@ function requestElevator(floor){
 
 	if(requestedElevator.currentfloor > floor){
 		for(i = requestedElevator.currentfloor; i < floor; i++){
-
+			console.log(i);
 		}
 	}
 	else{
-
+		for(i = requestedElevator.currentfloor; i > floor; i = i - 1){
+			console.log(i);
+		}
 	}
+
+	requestedElevator.currentfloor = floor;
+	requestedElevator.doorsopen = true;
+	requestedElevator.occupied = true;
+	requestedElevator.trips += 1;
 }
 
 </script>
